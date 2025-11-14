@@ -1,0 +1,42 @@
+/* ==========================================================================
+   MODO BILINGÜE - Componentes específicos
+   ========================================================================== */
+
+/* Estados auxiliares para modo bilingüe */
+.config-container__group--disabled {
+  opacity: 0.7;
+}
+
+.config-container__group--disabled select,
+.config-container__group--disabled .config-container__arrow {
+  pointer-events: none;
+}
+
+/* Tooltip de ayuda para traducción */
+.tarjeta__traduccion-container::after {
+  content: "Escribe la traducción correcta";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -22px;
+  font-size: 0.8em;
+  color: var(--color-accento);
+  background-color: var(--tooltip-bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px var(--tooltip-shadow);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tarjeta__traduccion-container:hover::after {
+  opacity: 1;
+}
+
+/* MODO OSCURO PARA TOOLTIP */
+[data-theme="dark"] .tarjeta__traduccion-container::after {
+  background-color: var(--tooltip-bg);
+  color: var(--color-accento);
+  box-shadow: 0 2px 6px var(--shadow-tooltip);
+}

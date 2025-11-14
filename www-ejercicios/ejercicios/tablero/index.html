@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- GLOBAL -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="/www-ejercicios/globales/css/global.css"> <!-- Estilo global para todas las páginas -->
+  <link rel="stylesheet" href="/www-ejercicios/globales/css/modal.css"> <!-- Modales globales para todas las páginas -->
+  <link id="dark-theme" rel="stylesheet" href="/www-ejercicios/globales/css/dark-theme.css" disabled> <!-- Modo oscuro para todas las páginas -->
+
+  <!-- JS-->
+  <script src="/www-ejercicios/globales/js/global-navigation.js"></script>
+
+<!-- INDIVIDUAL -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" /> <!-- Estilo individual -->
+  <link rel="stylesheet" href="css/modos-juego.css" />
+
+  <!-- JS -->
+  <script defer src="js/script.js"></script>
+  <script defer src="js/modales.js"></script>
+  <script defer src="js/modos-juego.js"></script>
+
+
+<!-- Favicon -->
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <title>Tablero - Juego de Fichas</title>
+</head>
+
+
+
+<body>
+  <header class="cabecera">
+    <!-- Columna 1: Botón "Volver a inicio" -->
+    <nav class="cabecera__navegador" aria-label="Navegación principal">
+      <a href="../../index.html" aria-label="Volver a inicio">
+        <button class="nav-acciones__boton" data-accion="volver-inicio" title="Inicio">
+          ⬅️
+        </button>
+      </a>
+    </nav>
+
+    <!-- Columna 2: Título y descripción -->
+    <div class="cabecera__contenido">
+      <h1 class="cabecera__titulo">Proyecto Tablero</h1>
+      <p class="cabecera__descripcion">
+        Intercambia fichas para conseguir filas del mismo color. Arrastra y suelta para intercambiar.
+      </p>
+    </div>
+
+    <!-- Columna 3: Navegación de acciones rápidas -->
+    <nav class="nav-acciones" role="navigation" aria-label="Acciones de la aplicación">
+      <ul class="nav-acciones__lista"
+        style="list-style:none;display:flex;gap:.5rem;justify-content:center;padding:0;margin:.5rem 0 0 0;">
+        <li>
+          <button class="nav-acciones__boton" data-accion="abrir-configuracion" aria-label="Abrir configuración"
+            title="Configuración">
+            ⚙️
+          </button>
+        </li>
+        <li>
+          <button class="nav-acciones__boton" data-accion="mostrar-ayuda" aria-label="Mostrar ayuda" title="Ayuda">
+            ❓
+          </button>
+        </li>
+        <li>
+          <button class="nav-acciones__boton" data-accion="cambiar-tema" aria-label="Cambiar tema" title="Cambiar tema">
+            🌓
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor-principal">
+    <!-- Panel de configuración lateral (oculto por defecto) -->
+    <aside id="panel-config" class="panel-config">
+      <div class="panel-config__contenido">
+        <div class="panel-config__header">
+          <h2 class="panel-config__titulo">⚙️ Configuración del juego</h2>
+          <button class="panel-config__cerrar" data-accion="cerrar-panel" aria-label="Cerrar panel">×</button>
+        </div>
+        <section class="controles">
+          <div class="controles__grupo">
+            <label for="modoJuego" class="controles__etiqueta">Modo de juego:</label>
+            <select id="modoJuego" class="controles__selector" data-configuracion="modo-juego">
+              <option value="normal" selected>Normal</option>
+              <option value="dosTableros">Dos tableros</option>
+              <option value="rompecabezas">Rompecabezas</option>
+            </select>
+          </div>
+          <div class="controles__grupo">
+            <label for="tamanoFicha" class="controles__etiqueta">Tamaño de la ficha:</label>
+            <select id="tamanoFicha" class="controles__selector" data-configuracion="tamano-ficha">
+              <option value="pequena">Pequeña</option>
+              <option value="mediana" selected>Mediana</option>
+              <option value="grande">Grande</option>
+            </select>
+          </div>
+          <div class="controles__grupo">
+            <label for="tamanoTablero" class="controles__etiqueta">Tamaño del tablero:</label>
+            <input type="number" id="tamanoTablero" class="controles__numero" data-configuracion="tamano-tablero"
+              min="2" max="7" value="3" aria-label="Tamaño del tablero">
+          </div>
+          <div class="controles__grupo">
+            <label for="formaFicha" class="controles__etiqueta">Forma de fichas:</label>
+            <select id="formaFicha" class="controles__selector" data-configuracion="forma-ficha">
+              <option value="cuadrado" selected>Cuadrado</option>
+              <option value="circulo">Círculo</option>
+              <option value="triangulo">Triángulo</option>
+            </select>
+          </div>
+        </section>
+       
+      </div>
+    </aside>
+
+    <section class="estado-juego">
+      <div class="estado-juego__item">
+        <span class="estado-juego__etiqueta">Movimientos:</span>
+        <span id="contadorMovimientos" class="estado-juego__valor" data-estado="movimientos" aria-live="polite">0</span>
+      </div>
+      <div class="estado-juego__item">
+        <span class="estado-juego__etiqueta">Tiempo:</span>
+        <span id="temporizador" class="estado-juego__valor" data-estado="tiempo" aria-live="polite">00:00</span>
+      </div>
+    </section>
+
+    <section class="botones-control">
+      <button id="inicio" class="botones-control__boton boton--verde" data-control="iniciar">Comenzar juego</button>
+      <button id="btnPausa" class="botones-control__boton boton--naranja" data-control="pausar" disabled>Pausar</button>
+      <button id="btnDetener" class="botones-control__boton boton--rojo" data-control="detener" disabled>Detener
+        juego</button>
+    </section>
+
+    <section class="tablero-contenedor">
+      <div id="tablero" class="tablero" data-tablero aria-label="Tablero de juego">
+        <!-- Las fichas se generarán dinámicamente desde JavaScript -->
+      </div>
+    </section>
+
+    <dialog id="modal-victoria" class="modal" data-modal="victoria">
+      <div class="modal__contenido">
+        <h2 class="modal__titulo">¡Felicidades!</h2>
+        <p class="modal__mensaje">Has completado el tablero correctamente.</p>
+        <div class="modal__estadisticas">
+          <p>Movimientos: <span id="modal-movimientos" data-resumen="movimientos"></span></p>
+          <p>Tiempo: <span id="modal-tiempo" data-resumen="tiempo"></span></p>
+        </div>
+        <div class="modal__botones">
+          <button id="cerrar-modal" class="modal__boton" data-accion="reiniciar-juego">Jugar de nuevo</button>
+          <button id="solo-cerrar-modal" class="modal__boton modal__boton--secundario"
+            data-accion="cerrar-modal-victoria">Cerrar</button>
+        </div>
+      </div>
+    </dialog>
+  </main>
+</body>
+
+</html>

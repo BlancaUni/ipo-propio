@@ -1,0 +1,474 @@
+/* ==========================================================================
+   PROYECTO MECANOGRAFÍA - Hoja de estilos principal
+   ========================================================================== */
+   
+/* ==========================================================================
+   RESET Y ESTILOS BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   BODY
+   ========================================================================== */
+
+body {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+/* ==========================================================================
+   CABECERA
+   ========================================================================== */
+
+.cabecera {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+}
+
+.cabecera__descripcion {
+  color: var(--color-texto-secundario);
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+}
+
+/* ==========================================================================
+   NAVEGACIÓN DE ACCIONES - OVERRIDE
+   ========================================================================== */
+
+.nav-acciones {
+  position: absolute;
+  right: 2rem;
+  justify-content: flex-end;
+}
+
+/* ==========================================================================
+   BOTONES DE CONTROL
+   ========================================================================== */
+
+.botones-control {
+  display: flex;
+  gap: var(--espaciado-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botones-control__boton {
+  padding: var(--espaciado-xs) var(--espaciado-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radio-md);
+  cursor: pointer;
+  transition: all var(--transicion-normal);
+  box-shadow: var(--sombra-md);
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.botones-control__boton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--color-botones-control-before);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.botones-control__boton:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.boton--verde {
+  background: var(--color-ficha-3);
+  color: var(--color-superficie);
+}
+
+.boton--verde:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px var(--color-boton-verde-hover-shadow);
+}
+
+.boton--naranja {
+  background: var(--color-ficha-2);
+  color: var(--color-superficie);
+}
+
+.boton--naranja:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px var(--color-boton-naranja-hover-shadow);
+}
+
+.boton--rojo {
+  background: var(--color-ficha-1);
+  color: var(--color-superficie);
+}
+
+.boton--rojo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px var(--color-boton-rojo-hover-shadow);
+}
+
+.botones-control__boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.botones-control__boton:disabled:hover {
+  transform: none;
+  box-shadow: var(--sombra-md);
+}
+
+.botones-control__boton:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================================== */
+
+.contenedor {
+  background: var(--color-superficie);
+  border-radius: var(--radio-xl);
+  padding: var(--espaciado-lg);
+  box-shadow: var(--sombra-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: fadeIn 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-lg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   TARJETAS
+   ========================================================================== */
+
+.tarjeta {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  padding: var(--espaciado-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-md);
+  box-shadow: var(--sombra-sm);
+}
+
+.tarjeta__titulo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0;
+}
+
+.tarjeta__contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-md);
+}
+
+.tarjeta__dato {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+}
+
+.tarjeta__palabra,
+.tarjeta__traduccion {
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.tarjeta__dato--hidden {
+  display: none;
+}
+
+.tarjeta__acciones {
+  display: flex;
+  gap: var(--espaciado-sm);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tarjeta__estadisticas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-sm);
+}
+
+.tarjeta__estadisticas-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--espaciado-sm);
+  flex-wrap: wrap;
+}
+
+.tarjeta__subcontenedor {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espaciado-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-xs);
+  min-width: 150px;
+}
+
+.tarjeta__subcontenedor--correctas {
+  border-left: 4px solid #10b981;
+}
+
+.tarjeta__subcontenedor--incorrectas {
+  border-left: 4px solid #ef4444;
+}
+
+.tarjeta__reloj {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-xs);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espaciado-xs) var(--espaciado-sm);
+  box-shadow: var(--sombra-sm);
+}
+
+.tarjeta__icono {
+  font-size: 1.2rem;
+}
+
+.tarjeta__contador {
+  font-weight: 600;
+  color: var(--color-texto);
+  min-width: 2rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.tarjeta__entrada {
+  width: 100%;
+}
+
+.tarjeta__input {
+  width: 100%;
+  padding: var(--espaciado-sm);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  font-size: 1.1rem;
+  background: white;
+  transition: all var(--transicion-normal);
+}
+
+.tarjeta__input:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.tarjeta__input:disabled {
+  background: rgba(226, 232, 240, 0.5);
+  color: var(--color-texto-secundario);
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+
+.btn {
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  border: none;
+  border-radius: var(--radio-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transicion-normal);
+  min-height: 44px;
+  color: white;
+  box-shadow: var(--sombra-md);
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn--iniciar {
+  background: #10b981;
+}
+
+.btn--iniciar:hover:not(:disabled) {
+  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+.btn--pausar {
+  background: #f59e0b;
+}
+
+.btn--pausar:hover:not(:disabled) {
+  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+}
+
+.btn--finalizar {
+  background: #ef4444;
+}
+
+.btn--finalizar:hover:not(:disabled) {
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+   CONFIGURACIÓN - Solo estilos específicos de mecanografía
+   ========================================================================== */
+
+.config-container__select-group {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-xs);
+  justify-content: flex-start;
+}
+
+.config-container__arrow {
+  font-weight: bold;
+  color: var(--color-primario);
+  font-size: 1.2rem;
+}
+
+.checkbox-wrapper-6 .tgl {
+  display: none;
+}
+
+.checkbox-wrapper-6 .tgl+.tgl-btn {
+  outline: 0;
+  display: block;
+  width: 4em;
+  height: 2em;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-wrapper-6 .tgl+.tgl-btn:after {
+  position: relative;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+  left: 0;
+}
+
+.checkbox-wrapper-6 .tgl:checked+.tgl-btn:after {
+  left: 50%;
+}
+
+.checkbox-wrapper-6 .tgl-light+.tgl-btn {
+  background: #f0f0f0;
+  border-radius: 2em;
+  padding: 2px;
+  transition: all 0.4s ease;
+}
+
+.checkbox-wrapper-6 .tgl-light+.tgl-btn:after {
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.checkbox-wrapper-6 .tgl-light:checked+.tgl-btn {
+  background: #9FD6AE;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  body {
+    padding: var(--espaciado-sm);
+  }
+  
+  .cabecera {
+    padding: var(--espaciado-md);
+  }
+  
+  .contenedor {
+    padding: var(--espaciado-md);
+  }
+  
+  .tarjeta__acciones {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tarjeta__estadisticas-row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .cabecera__titulo {
+    font-size: 1.5rem;
+  }
+  
+  .tarjeta {
+    padding: var(--espaciado-sm);
+  }
+}

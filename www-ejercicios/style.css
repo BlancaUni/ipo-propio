@@ -1,0 +1,239 @@
+/* RESET MÍNIMO - Consistencia entre navegadores */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* VARIABLES CSS - Diseño cromático y valores reutilizables */
+:root {
+  /* Paleta base solicitada (hex) */
+  --c1: #122f0b; /* 122f0b - verde muy oscuro */
+  --c2: #275F3E; /* 275F3E - verde bosque */
+  --c3: #44785b; /* 44785b - verde medio */
+  --c4: #6f9d87; /* 6f9d87 - verde grisáceo */
+  --c5: #b5caba; /* b5caba - verde claro */
+
+  /* Alias semánticos (usados por el resto del CSS) */
+  --color-fondo: var(--c5);
+  --color-principal-cabecerapie: var(--c2);
+  --color-principal: var(--c2);
+  --color-principal-ejercicios: var(--c3);
+  --color-principal-texto: #ffffff;
+  --color-texto: var(--c1);
+  --color-secundario: var(--c4);
+  --color-borde: var(--c4);
+
+  /* valores reutilizables originales (sin cambios funcionales) */
+  --fuente-principal: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radio-borde: 0.625rem;
+  --transicion: 0.2s;
+  --espaciado: 1rem;
+  --bg-overlay-opacity: 0.18;
+}
+
+/* BODY - Configuración general y layout base (sin line-height) */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fuente-principal);
+  background: var(--color-fondo);
+  min-height: 100vh;
+  color: var(--color-texto);
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* eliminar espaciado entre elementos */
+}
+
+/* Ritmo tipográfico sin line-height: márgenes en bloque y espaciado en listados */
+p,
+li {
+  margin: 0 0 1rem 0;
+}
+
+h1, h2, h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+/* Ajustes específicos para títulos y bloques principales */
+.cabecera-ipo__titulo,
+.titulo {
+  margin: 0; /* evitar márgenes inesperados */
+  padding: 0.15rem 0;
+}
+
+/* Mantener espaciado en contenedores mediante gap/padding */
+.contenedor-ipo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar altura/alineado de botones y controles usando padding (no line-height) */
+.lista-ejercicios__item a {
+  padding: 0.6rem 1rem; /* control de altura/espacio interno */
+}
+
+/* CABECERA - Estilo y estructura del header */
+.cabecera-ipo {
+  background-color: var(--color-principal-cabecerapie);
+  color: var(--color-principal-texto);
+  padding: 0.1875rem;
+  margin: 0;
+}
+
+.cabecera-ipo__titulo {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.0625rem;
+}
+
+.cabecera-ipo__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cabecera-ipo__link:hover,
+.cabecera-ipo__link:focus {
+  text-decoration: underline;
+}
+
+.cabecera-ipo__imagen {
+  height: 1.5em;
+  vertical-align: middle;
+}
+
+/* CONTENEDOR PRINCIPAL - Estructura flexible central */
+.contenedor-ipo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* EJERCICIOS - Contenedor con imagen de fondo */
+.ejercicios-ipo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background: url('images/canada.jpeg') center/cover no-repeat;
+  background-color: var(--color-fondo);
+}
+
+/* LISTA DE EJERCICIOS - Elementos navegables */
+.lista-ejercicios {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  width: 100%;
+  max-width: 25rem;
+  margin: auto;
+}
+
+.lista-ejercicios__item a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-principal-ejercicios);
+  font-weight: bold;
+  background: hsl(0, 0%, 100%, 0.85);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-borde);
+  transition: background var(--transicion), color var(--transicion);
+  font-size: 1rem;
+  /* quitar `outline: none;` si existe */
+}
+
+.lista-ejercicios__item a:hover,
+.lista-ejercicios__item a:focus {
+  text-decoration: underline;
+  background: hsl(0, 0%, 100%, 0.85); /* mismo fondo que el estado normal */
+  color: var(--color-principal-ejercicios); /* mantener color legible */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  transition: background var(--transicion), color var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+}
+
+/* foco accesible: usar colores definidos y :focus-visible */
+.lista-ejercicios__item a:focus-visible {
+  outline: 3px solid rgba(179,224,255,0.6);
+  outline-offset: 2px;
+}
+
+/* PIE - Footer con logos y enlaces */
+.pie-ipo {
+  background-color: var(--color-principal-cabecerapie);
+  color: var(--color-principal-texto);
+  padding: 0.5rem 1rem;
+  position: relative;
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.pie-ipo__centro {
+  display: inline-block;
+}
+
+.pie-ipo__logo {
+  height: 2em;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.pie-ipo__github {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.pie-ipo__logo--github {
+  height: 1.8em;
+  width: auto;
+}
+
+.pie-ipo__github:hover img,
+.pie-ipo__github:focus img {
+  opacity: 0.8;
+  transition: opacity var(--transicion);
+}
+
+/* RESPONSIVE - Ajustes para pantallas pequeñas */
+@media (max-width: 37.5rem) {
+  .ejercicios-ipo {
+    padding: 1rem;
+  }
+
+  .lista-ejercicios {
+    max-width: 100%;
+  }
+
+  .cabecera-ipo__titulo {
+    font-size: 1rem;
+  }
+}
+
+/* Evitar eliminar el foco: proporcionar foco visible accesible */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
