@@ -28,6 +28,14 @@
   --tooltip-shadow: var(--sombra-md);
 }
 
+/* Asegurar que el Mapa use rejilla clara y fondo oscuro cuando el tema global esté activo */
+[data-theme="dark"] .mapa {
+  /* Use variables so the base style composes the full background-image
+     and we avoid conflicting background-image declarations. */
+  --grid-color: rgba(255,255,255,0.06);
+  --map-bg: linear-gradient(180deg, #041018 0%, #071521 100%);
+}
+
 [data-theme="dark"] body {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   color: var(--color-texto);
