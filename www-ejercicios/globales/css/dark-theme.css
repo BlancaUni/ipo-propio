@@ -42,13 +42,115 @@
 }
 
 /* ==========================================================================
+   MAPA - Modo oscuro específico
+   ========================================================================== */
+
+/* Leyenda (tooltip) en modo oscuro */
+[data-theme="dark"] .mapa .mapa__leyenda,
+[data-theme="dark"] .mapa__leyenda {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #334155 !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+}
+
+[data-theme="dark"] .mapa__leyenda h3 {
+  color: #818cf8 !important;
+}
+
+[data-theme="dark"] .mapa__leyenda p {
+  color: #cbd5e1 !important;
+}
+
+/* Formulario modal en modo oscuro */
+[data-theme="dark"] dialog.formulario-item[open],
+[data-theme="dark"] .formulario-item[open] {
+  background: rgba(15,23,42,0.85) !important;
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__form,
+[data-theme="dark"] .formulario-item[open] .formulario-item__form {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+  color: #f1f5f9 !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__titulo,
+[data-theme="dark"] .formulario-item[open] .formulario-item__titulo {
+  color: #818cf8 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo label,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo label {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo input,
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo select,
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo textarea,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo input,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo select,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo textarea {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo input:focus,
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo select:focus,
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__campo textarea:focus,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo input:focus,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo select:focus,
+[data-theme="dark"] .formulario-item[open] .formulario-item__campo textarea:focus {
+  border-color: #818cf8 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .formulario-item__ayuda,
+[data-theme="dark"] .formulario-item[open] .formulario-item__ayuda {
+  color: #a78bfa !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .btn--primario,
+[data-theme="dark"] .formulario-item[open] .btn--primario {
+  background: #818cf8 !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .btn--primario:hover,
+[data-theme="dark"] .formulario-item[open] .btn--primario:hover {
+  background: #6366f1 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .btn--secundario,
+[data-theme="dark"] .formulario-item[open] .btn--secundario {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] dialog.formulario-item[open] .btn--secundario:hover,
+[data-theme="dark"] .formulario-item[open] .btn--secundario:hover {
+  background: #818cf8 !important;
+  color: #fff !important;
+}
+
+/* Botones de filtro y vista del mapa */
+[data-theme="dark"] .btn--filtro:not([aria-pressed="true"]):not(.active),
+[data-theme="dark"] .mapa__boton-vista:not(.mapa__boton-vista--activo) {
+  color: #f1f5f9 !important;
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* ==========================================================================
    TABLERO - Modo oscuro
    ========================================================================== */
 
 [data-theme="dark"] .cabecera {
   background: linear-gradient(135deg, #1e293b, #334155);
   box-shadow: var(--sombra-lg), 0 0 30px rgba(129, 140, 248, 0.1);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .cabecera__titulo {
@@ -56,7 +158,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px rgba(129, 140, 248, 0.3);
+  /* Eliminar text-shadow que puede afectar el layout */
 }
 
 [data-theme="dark"] .cabecera__descripcion {
@@ -81,19 +183,19 @@
 [data-theme="dark"] .contenedor-principal {
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   box-shadow: var(--sombra-xl), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .estado-juego__item {
   background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(167, 139, 250, 0.1));
   box-shadow: var(--sombra-md), 0 0 20px rgba(129, 140, 248, 0.05);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
+/* Asegurar que no hay transforms que muevan elementos */
 [data-theme="dark"] .estado-juego__item:hover {
-  transform: translateY(-3px) scale(1.02);
+  /* Eliminar transforms que cambien posición */
   box-shadow: var(--sombra-lg), 0 0 30px rgba(129, 140, 248, 0.2);
-  border-color: var(--color-primario);
 }
 
 [data-theme="dark"] .estado-juego__etiqueta {
@@ -138,13 +240,12 @@
 [data-theme="dark"] .tablero {
   background: linear-gradient(135deg, #0f172a, #1e293b);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(129, 140, 248, 0.1);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .tablero::after {
   color: var(--color-texto-secundario);
-  text-shadow: 0 0 10px rgba(129, 140, 248, 0.3);
-  line-height: 1.4;
+  /* Eliminar text-shadow y line-height que pueden mover el layout */
 }
 
 [data-theme="dark"] .tablero--activo::after {
@@ -179,16 +280,14 @@
 [data-theme="dark"] .tablero__etiqueta {
   background: linear-gradient(135deg, rgba(129, 140, 248, 0.2), rgba(167, 139, 250, 0.2));
   color: var(--color-primario);
-  text-shadow: 0 0 10px rgba(129, 140, 248, 0.3);
-  border: 1px solid rgba(129, 140, 248, 0.3);
+  /* Eliminar text-shadow y border que pueden mover elementos */
 }
 
 /* Controles de configuración */
 [data-theme="dark"] .controles {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border y backdrop-filter que pueden afectar posición */
   box-shadow: var(--sombra-md);
-  backdrop-filter: blur(10px);
 }
 
 [data-theme="dark"] .controles__selector,
@@ -234,13 +333,13 @@
 [data-theme="dark"] .contenedor {
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   box-shadow: var(--sombra-xl), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .tarjeta {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(51, 65, 85, 0.7));
   box-shadow: var(--sombra-md), 0 0 20px rgba(129, 140, 248, 0.05);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .tarjeta__titulo {
@@ -259,7 +358,7 @@
 [data-theme="dark"] .tarjeta__subcontenedor,
 [data-theme="dark"] .tarjeta__reloj {
   background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(167, 139, 250, 0.1));
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .tarjeta__contador {
@@ -380,16 +479,10 @@
    MODALES - Modo oscuro
    ========================================================================== */
 
-/* Modal backdrop */
-[data-theme="dark"] .modal::backdrop {
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-}
-
 /* Contenido del modal */
 [data-theme="dark"] .modal__contenido {
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  border: 1px solid rgba(129, 140, 248, 0.3);
+  /* Eliminar border que puede cambiar dimensiones */
   box-shadow: var(--sombra-xl), 0 0 50px rgba(129, 140, 248, 0.2);
 }
 
@@ -400,7 +493,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   border-bottom-color: rgba(129, 140, 248, 0.3);
-  text-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+  /* Eliminar text-shadow que puede mover elementos */
 }
 
 /* Mensaje del modal */
@@ -420,33 +513,20 @@
 
 [data-theme="dark"] .modal__boton--secundario {
   background: linear-gradient(135deg, rgba(51, 65, 85, 0.8), rgba(71, 85, 105, 0.8));
-  border: 1px solid rgba(129, 140, 248, 0.3);
-}
-
-[data-theme="dark"] .modal__boton--secundario:hover {
-  background: linear-gradient(135deg, rgba(71, 85, 105, 0.9), rgba(100, 116, 139, 0.9));
-  box-shadow: var(--sombra-md), 0 0 20px rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 /* Estadísticas del modal */
 [data-theme="dark"] .modal__estadisticas {
   background: linear-gradient(135deg, rgba(129, 140, 248, 0.15), rgba(167, 139, 250, 0.15));
-  border: 1px solid rgba(129, 140, 248, 0.3);
+  /* Eliminar border que puede cambiar dimensiones */
   box-shadow: var(--sombra-sm), 0 0 15px rgba(129, 140, 248, 0.1);
-}
-
-[data-theme="dark"] .modal__estadisticas p {
-  color: var(--color-texto);
-}
-
-[data-theme="dark"] .modal__estadisticas span {
-  color: var(--color-acento);
 }
 
 /* Modal de configuración */
 [data-theme="dark"] #modal-config .controles {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.6));
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
 }
 
 [data-theme="dark"] .controles__selector,
@@ -486,11 +566,12 @@
 
 [data-theme="dark"] .modal-ayuda__seccion {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(51, 65, 85, 0.7));
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  /* Eliminar border que puede cambiar dimensiones */
   box-shadow: var(--sombra-sm);
 }
 
 [data-theme="dark"] .modal-ayuda__seccion:hover {
+  /* Solo cambiar border-color, no border width */
   border-color: var(--color-primario);
   box-shadow: var(--sombra-md), 0 0 20px rgba(129, 140, 248, 0.15);
 }
@@ -578,4 +659,62 @@
 [data-theme="dark"] .controles__selector:disabled {
   background: rgba(51, 65, 85, 0.5);
   color: var(--color-texto-secundario);
+}
+
+/* Asegurar que los marcadores no cambien de tamaño */
+[data-theme="dark"] .marcador,
+[data-theme="dark"] .mapa__marcador,
+[data-theme="dark"] .marker {
+  /* Mantener exactamente las mismas dimensiones */
+  border: 2px solid rgba(255,255,255,0.9) !important;
+  /* NO aplicar background genérico aquí - dejar que las clases específicas prevalezcan */
+  color: white !important;
+  box-shadow: var(--sombra-sm) !important;
+  /* Eliminar width y height específicos que puedan sobreescribir CSS base */
+}
+
+/* Mantener colores específicos por tipo en modo oscuro con máxima especificidad */
+[data-theme="dark"] .mapa__marcador--restaurante { 
+  background: linear-gradient(135deg,#ef4444,#f97373) !important; 
+  --marcador-rgba: 239,68,68; 
+}
+[data-theme="dark"] .mapa__marcador--cafe { 
+  background: linear-gradient(135deg,#f59e0b,#fbbf24) !important; 
+  --marcador-rgba: 245,158,11; 
+}
+[data-theme="dark"] .mapa__marcador--bar { 
+  background: linear-gradient(135deg,#3b82f6,#60a5fa) !important; 
+  --marcador-rgba: 59,130,246; 
+}
+[data-theme="dark"] .mapa__marcador--otros { 
+  background: linear-gradient(135deg,#8b5cf6,#a78bfa) !important; 
+  --marcador-rgba: 139,92,246; 
+}
+
+/* Asegurar que los hovers también funcionen */
+[data-theme="dark"] .mapa__marcador--restaurante:hover,
+[data-theme="dark"] .mapa__marcador--cafe:hover,
+[data-theme="dark"] .mapa__marcador--bar:hover,
+[data-theme="dark"] .mapa__marcador--otros:hover {
+  /* Usar la misma transformación que en modo claro */
+  transform: translateY(-4px) scale(1.05) !important;
+  box-shadow: var(--sombra-lg) !important;
+}
+
+[data-theme="dark"] .mapa__marcador-icono {
+  color: white !important;
+  font-size: 1.2em !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+  filter: none !important;
+  /* Asegurar que el emoji sea visible */
+}
+
+/* Mejorar visibilidad de iconos en marcadores específicos */
+[data-theme="dark"] .mapa__marcador--restaurante .mapa__marcador-icono,
+[data-theme="dark"] .mapa__marcador--cafe .mapa__marcador-icono,
+[data-theme="dark"] .mapa__marcador--bar .mapa__marcador-icono,
+[data-theme="dark"] .mapa__marcador--otros .mapa__marcador-icono {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6) !important;
+  font-weight: 800 !important;
 }

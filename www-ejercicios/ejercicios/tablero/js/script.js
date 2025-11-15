@@ -564,3 +564,5 @@ function actualizarUI() {
 function actualizarContador() {
   TABLERO.nodos.contadorMovimientos.textContent = TABLERO.estado.movimientos;
 }
+
+// No hay gestión de tema oscuro aquí.

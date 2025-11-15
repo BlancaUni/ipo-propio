@@ -342,3 +342,5 @@ window.addEventListener('click', (event) => {
 
 // Detener test al cerrar la página
 window.addEventListener('beforeunload', detenerTest);
+
+// No hay gestión de tema oscuro aquí.
